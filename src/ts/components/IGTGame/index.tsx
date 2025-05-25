@@ -6,6 +6,8 @@ import { ResultEntry } from '../../types/ResultEntry';
 export const IGTGame = ({ onComplete, numberOfRounds = 100 }: IGTGameProps) => {
   const [resultEntries, setResults] = useState<ResultEntry[]>([]);
   const [currentRound, setRound] = useState<number>(1);
+  
+  // TODO: https://rcns.co.uk/ - https://igt-tool.streamlit.app/ - https://www.psytoolkit.org/experiment-library/igt.html#_download
 
   const handleCardPress = (value: number) => {
     if (currentRound < numberOfRounds) {
