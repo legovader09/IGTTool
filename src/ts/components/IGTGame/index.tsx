@@ -3,6 +3,6 @@ import { FC } from "react";
 
 export const IGTGame: FC = () => (
   <section className="igt-game">
-      asd
+      <h1>IGT Tool</h1>
   </section>
 );

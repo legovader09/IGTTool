@@ -1,6 +1,6 @@
 {
-  "short_name": "{SHORTHAND_TITLE}",
-  "name": "{WEBSITE_TITLE}",
+  "short_name": "IGT Tool",
+  "name": "IGT Analyser Tool",
   "start_url": "/",
   "icons": [
     {
