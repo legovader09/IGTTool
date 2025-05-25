@@ -1,4 +1,4 @@
-﻿export interface ResultEntry {
+﻿export type ResultEntry = {
     timeTaken: number;
     decision: number;
 }
