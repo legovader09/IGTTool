@@ -29,7 +29,7 @@ export const App = () => {
     <section className="container">
       <section className="row justify-content-center">
         <section className="col-12 mb-2">
-          <img src="../static/logo.png" alt="RCNS" />
+          <img src="static/logo.png" alt="RCNS" />
         </section>
         {appState.currentState === States.Menu && (
           <>
