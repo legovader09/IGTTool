@@ -1,0 +1,29 @@
+﻿.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  @include animation(rotate, 2s, linear, infinite);
+  
+  &::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 5px solid $color-black;
+    @include animation(prixClipFix, 2s, linear, infinite)
+  }
+  
+  &-wrapper {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    padding: 1rem;
+    user-select: none;
+    
+    p {
+      margin: 0 0 0 16px;
+    }
+  }
+}

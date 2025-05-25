@@ -1,7 +1,92 @@
 ﻿.igt-game {
   &--instructions {
+    transition: all 0.3s ease;
     background-color: rgba($color-primary, .8);
     border-radius: 8px;
     font-size: 1.125rem;
+    max-height: 1000px;
+    overflow: hidden;
+    
+    &.hide {
+      max-height: 0;
+      padding: 0;
+      opacity: 0;
+    }
+  }
+  
+  &--balance {
+    font-size: 1.25rem;
+  }
+  
+  &--info-banner {
+    padding: 8px 12px;
+    font-weight: $font-weight-bold;
+    font-size: 1.25rem;
+    background-color: rgba($color-primary, .6);
+    vertical-align: center;
+    user-select: none;
+    
+    p {
+      margin: 0;
+    }
+    
+    &.highlight {
+      background-color: $color-success;
+      
+      p {
+        color: $color-white;
+      }
+    }
+  }
+
+  &--btn-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  &--balance-visual {
+    min-height: 150px;
+    max-height: 150px;
+    display: flex;
+    place-content: space-evenly;
+    
+    @include media-breakpoint-up(md) {
+      min-height: 180px;
+      max-height: 180px;
+    }
+  }
+  
+  &--block {
+    padding: 1rem;
+    border-radius: 8px;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    
+    p {
+      color: $color-yellow;
+      text-align: center;
+      font-size: 1.125rem;
+      font-weight: 900;
+      margin: 8px 0 0;
+    }
+    
+    @include media-breakpoint-up(md) {
+      width: 30%;
+      
+      p {
+        font-size: 1.25rem;
+      }
+    }
+    
+    &-reward {
+      background-color: $color-success;
+    }
+    &-fine {
+      background-color: $color-error;
+    }
   }
 }

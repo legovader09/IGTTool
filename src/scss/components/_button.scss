@@ -30,4 +30,23 @@
       background-color: rgba($color-secondary, .5);
     }
   }
+  
+  &--game {
+    background-color: $color-secondary;
+    border-radius: 50%;
+    border: 4px solid rgba($color-accent, .4);
+    width: 72px;
+    height: 72px;
+    font-size: 24px;
+
+    &:hover {
+      background-color: rgba($color-secondary, .5);
+    }
+    
+    @include media-breakpoint-up(md) {
+      width: 128px;
+      height: 128px;
+      font-size: 48px;
+    }
+  }
 }

@@ -5,6 +5,7 @@ import { ResultEntry } from './types/ResultEntry';
 
 import { IGTGame } from './components/IGTGame';
 import { States } from './enums/States';
+import { IGTAnalyser } from './components/IGTAnalyser';
 
 export const App = () => {
   const [appState, setAppState] = useState<AppState>({ results: [], currentState: States.Menu });
@@ -13,6 +14,7 @@ export const App = () => {
     setAppState((prevState) => ({
       ...prevState,
       results,
+      currentState: States.Analysing,
     }));
   };
 
@@ -29,7 +31,7 @@ export const App = () => {
         <section className="col-12 mb-2">
           <img src="../static/logo.png" alt="RCNS" />
         </section>
-        {appState.currentState !== States.Menu ? (
+        {appState.currentState === States.Menu && (
           <>
             <section className="col-12">
               <h2>Iowa Gambling Task</h2>
@@ -45,9 +47,15 @@ export const App = () => {
               <button type="button" className="btn btn--secondary">Analyse existing IGT Results</button>
             </section>
           </>
-        ) : (
+        )}
+        {appState.currentState === States.Playing && (
           <section className="col-12">
-            <IGTGame onComplete={handleUpdateResults} numberOfRounds={10} />
+            <IGTGame onComplete={handleUpdateResults} numberOfRounds={100} />
+          </section>
+        )}
+        {appState.currentState === States.Analysing && (
+          <section className="col-12">
+            <IGTAnalyser data={appState.results} />
           </section>
         )}
       </section>

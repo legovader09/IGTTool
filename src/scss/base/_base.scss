@@ -73,3 +73,48 @@ fieldset {
 img {
   max-width: 100%;
 }
+
+table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba($color-black, 0.15);
+  
+  thead tr {
+    background-color: rgba($color-table-header, .9);
+    color: $color-white;
+    text-align: left;
+  }
+  
+  th {
+    font-weight: $font-weight-bold;
+  }
+  
+  th,
+  td {
+    padding: 12px 15px;
+  }
+  
+  tbody tr {
+    transition: all .2s ease-in-out;
+    border-bottom: 1px solid rgba($color-light-grey, .2);
+    
+    &:nth-of-type(even) {
+      background-color: rgba($color-light-grey, .2);
+      
+      &:hover {
+        background-color: rgba($color-accent, .2);
+      }
+    }
+    
+    &:last-of-type {
+      border-bottom: 2px solid rgba($color-accent, .3);
+    }
+
+    &:hover {
+      background-color: rgba($color-accent, .1);
+    }
+  }
+}
