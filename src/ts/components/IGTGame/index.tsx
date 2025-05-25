@@ -92,14 +92,14 @@ export const IGTGame = ({
                     <p>
                       You win {formatToCurrency(latestGain)}
                     </p>
-                    <img src="icon-win.png" width={64} alt="Winner!" />
+                    <img src="assets/icon-win.png" width={64} alt="Winner!" />
                   </div>
                   {latestFine > 0 ? (
                     <div className="igt-game--block igt-game--block-fine">
                       <p>
                         Fee of {formatToCurrency(latestFine)} applies now!
                       </p>
-                      <img src="icon-fine.png" width={64} alt="Fined!" />
+                      <img src="assets/icon-fine.png" width={64} alt="Fined!" />
                     </div>
                   ) : (
                     <div className="igt-game--block igt-game--block-empty" />
