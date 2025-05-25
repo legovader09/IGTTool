@@ -1,0 +1,33 @@
+﻿.btn {
+  padding: 8px 12px;
+  border: 1px solid rgba($color-black, .3);
+  filter: $drop-shadow-small;
+  transition: all .3s;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  user-select: none;
+  
+  &--grouped {
+    display: flex;
+    
+    .btn:first-child {
+      margin-right: 8px;
+    }
+  }
+  
+  &--primary {
+    background-color: $color-primary;
+    
+    &:hover {
+      background-color: rgba($color-primary, .5);
+    }
+  }
+  
+  &--secondary {
+    background-color: $color-secondary;
+
+    &:hover {
+      background-color: rgba($color-secondary, .5);
+    }
+  }
+}
