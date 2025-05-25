@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import { useState } from 'react';
 import { IGTInstructionProps } from '../../../interfaces/IGTInstructionProps';
+import { formatToCurrency } from '../../../helpers/formatAsCurrency';
 
 export const Instructions = ({ onStart, startingMoney, numberOfRounds }: IGTInstructionProps) => {
   const [isHiding, setIsHiding] = useState(false);
@@ -25,11 +26,11 @@ export const Instructions = ({ onStart, startingMoney, numberOfRounds }: IGTInst
         also have to pay a fee to the bank. After each trial, you need to
         collect your money, which will adjust your pot of money.
       </p>
-      <p>You start with a loan of <b>£{startingMoney}</b>.</p>
+      <p>You start with a loan of <b>{formatToCurrency(startingMoney)}</b>.</p>
       <p>There are <b>{numberOfRounds}</b> trials (taking 5 minutes or so).</p>
       <p>
         Go on until it stops and see how much you
-        can make on top the loan of <b>£{startingMoney}</b>.
+        can make on top the loan of <b>{formatToCurrency(startingMoney)}</b>.
       </p>
       <p><b>Press Start Game to begin. Good luck!</b></p>
       <button type="button" className="btn btn--secondary" onClick={handleClick}>Start Game</button>
