@@ -11,24 +11,16 @@ export const BlockData = ({ data, isVisible = false }: IGTAnalyserProps) => {
     const counts: IGTAnalyserBlockData = {
       A: 0, B: 0, C: 0, D: 0, Net: 0,
     };
+
+    const decisionMap: Record<number, keyof Omit<IGTAnalyserBlockData, 'Net'>> = {
+      1: 'A', 2: 'B', 3: 'C', 4: 'D',
+    };
+
     entries.forEach((entry) => {
-      switch (entry.decision) {
-        case 1:
-          counts.A++;
-          break;
-        case 2:
-          counts.B++;
-          break;
-        case 3:
-          counts.C++;
-          break;
-        case 4:
-          counts.D++;
-          break;
-        default:
-          break;
-      }
+      const key = decisionMap[entry.decision];
+      if (key) counts[key]++;
     });
+
     counts.Net = (counts.C + counts.D) - (counts.A + counts.B);
     return counts;
   };
