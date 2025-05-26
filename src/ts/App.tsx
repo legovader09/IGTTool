@@ -8,14 +8,8 @@ import { States } from './enums/States';
 import { IGTAnalyser } from './components/IGTAnalyser';
 import { DummyResultEntries } from './data/DummyResultEntries';
 
-const DEBUG_ANALYSIS = false;
-const initialAppState: AppState = {
-  results: DEBUG_ANALYSIS ? DummyResultEntries.generateEntries(100) : [],
-  currentState: DEBUG_ANALYSIS ? States.Analysing : States.Menu,
-};
-
 export const App = () => {
-  const [appState, setAppState] = useState<AppState>(initialAppState);
+  const [appState, setAppState] = useState<AppState>({ results: [], currentState: States.Menu });
 
   const handleUpdateResults = (results: ResultEntry[]) => {
     setAppState((prevState) => ({
@@ -30,6 +24,13 @@ export const App = () => {
       ...prevState,
       currentState: States.Playing,
     }));
+  };
+
+  const handleLaunchAnalyser = () => {
+    setAppState({
+      results: DummyResultEntries.generateEntries(100),
+      currentState: States.Analysing,
+    });
   };
 
   return appState && (
@@ -51,7 +52,12 @@ export const App = () => {
                 onClick={handleLaunchGame}
               >Run IGT Game & Analyser
               </button>
-              <button type="button" className="btn btn--secondary">Analyse existing IGT Results</button>
+              <button
+                type="button"
+                className="btn btn--secondary"
+                onClick={handleLaunchAnalyser}
+              >View example IGT Results
+              </button>
             </section>
           </>
         )}
