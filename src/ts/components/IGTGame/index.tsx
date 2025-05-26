@@ -141,7 +141,7 @@ export const IGTGame = ({
             </section>
             <button
               type="button"
-              className={`col-12 btn igt-game--info-banner ${showReward ? 'highlight' : ''}`}
+              className={`col-12 btn btn--no-scale igt-game--info-banner ${showReward ? 'highlight' : ''}`}
               onClick={() => setShowReward(false)}
             >
               <p>{showReward ? 'CLICK HERE TO COLLECT REWARD (and/or pay fee)' : 'CHOOSE AND CLICK/TAP ON ONE OF THE 4 BUTTONS'}</p>

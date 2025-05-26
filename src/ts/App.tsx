@@ -8,8 +8,10 @@ import { States } from './enums/States';
 import { IGTAnalyser } from './components/IGTAnalyser';
 import { DummyResultEntries } from './data/DummyResultEntries';
 
+const initialValues: AppState = { results: [], currentState: States.Menu };
+
 export const App = () => {
-  const [appState, setAppState] = useState<AppState>({ results: [], currentState: States.Menu });
+  const [appState, setAppState] = useState<AppState>(initialValues);
 
   const handleUpdateResults = (results: ResultEntry[]) => {
     setAppState((prevState) => ({
@@ -36,8 +38,19 @@ export const App = () => {
   return appState && (
     <section className="container">
       <section className="row justify-content-center">
-        <section className="col-12 mb-2">
+        <section className="col-12">
           <img src="assets/logo.png" alt="RCNS" />
+        </section>
+        <section className="col-12 mb-2">
+          {appState.currentState !== States.Menu && (
+            <button
+              type="button"
+              className="btn btn--inline"
+              onClick={() => setAppState(initialValues)}
+            >
+              Go back
+            </button>
+          )}
         </section>
         {appState.currentState === States.Menu && (
           <>

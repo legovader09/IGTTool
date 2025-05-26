@@ -8,7 +8,7 @@
   cursor: pointer;
   user-select: none;
   
-  &:hover {
+  &:hover:not(.btn--no-scale) {
     transform: scale(1.1);
   }
   
@@ -25,13 +25,19 @@
       background-color: rgba($color-primary, .5);
     }
   }
-  
+
   &--secondary {
     background-color: $color-secondary;
 
     &:hover {
       background-color: rgba($color-secondary, .5);
     }
+  }
+
+  &--inline {
+    background-color: transparent;
+    padding: 2px 0;
+    border: none;
   }
   
   &--game {
