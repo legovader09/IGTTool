@@ -1,7 +1,6 @@
 {
   "short_name": "IGT Tool",
   "name": "IGT Analyser Tool",
-  "start_url": "/",
   "icons": [
     {
       "src": "favicon.ico",
