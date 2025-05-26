@@ -83,7 +83,7 @@ export const IGTGame = ({
         {gameStarted ? (
           <>
             <section className="col-12">
-              <p className="igt-game--balance">Your money: <b>£{money}</b></p>
+              <p className="igt-game--balance">Your money: <b>{formatToCurrency(money)}</b></p>
             </section>
             <section className="col-12 mb-3 igt-game--balance-visual">
               {showReward && (

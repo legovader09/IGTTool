@@ -6,9 +6,16 @@ import { ResultEntry } from './types/ResultEntry';
 import { IGTGame } from './components/IGTGame';
 import { States } from './enums/States';
 import { IGTAnalyser } from './components/IGTAnalyser';
+import { DummyResultEntries } from './data/DummyResultEntries';
+
+const DEBUG_ANALYSIS = false;
+const initialAppState: AppState = {
+  results: DEBUG_ANALYSIS ? DummyResultEntries.generateEntries(100) : [],
+  currentState: DEBUG_ANALYSIS ? States.Analysing : States.Menu,
+};
 
 export const App = () => {
-  const [appState, setAppState] = useState<AppState>({ results: [], currentState: States.Menu });
+  const [appState, setAppState] = useState<AppState>(initialAppState);
 
   const handleUpdateResults = (results: ResultEntry[]) => {
     setAppState((prevState) => ({

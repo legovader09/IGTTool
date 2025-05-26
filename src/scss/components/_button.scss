@@ -1,17 +1,20 @@
 ﻿.btn {
+  margin: 4px 0;
   padding: 8px 12px;
   border: 1px solid rgba($color-black, .3);
   filter: $drop-shadow-small;
-  transition: all .3s;
+  transition: all .2s ease-in-out;
   font-weight: $font-weight-semibold;
   cursor: pointer;
   user-select: none;
   
-  &--grouped {
-    display: flex;
-    
+  &:hover {
+    transform: scale(1.1);
+  }
+  
+  &--grouped {    
     .btn:first-child {
-      margin-right: 8px;
+      margin-right: 16px;
     }
   }
   

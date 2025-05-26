@@ -2,4 +2,5 @@
 
 export interface IGTAnalyserProps {
   data: ResultEntry[];
+  isVisible?: boolean;
 }
