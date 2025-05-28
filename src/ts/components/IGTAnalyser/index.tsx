@@ -33,7 +33,7 @@ export const IGTAnalyser = ({ data, tableRef }: IGTAnalyserProps) => {
             <thead>
               <tr>
                 <th>Group</th>
-                <th>Net Score</th>
+                <th>Raw Score</th>
                 <th>Z Score</th>
                 <th>Descriptor</th>
               </tr>

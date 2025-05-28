@@ -3,5 +3,5 @@
   B: number;
   C: number;
   D: number;
-  Net: number;
+  Raw: number;
 }
