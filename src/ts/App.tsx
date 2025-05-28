@@ -45,7 +45,7 @@ export const App = () => {
           <img src="assets/logo.png" alt="RCNS" />
         </section>
         <section className="col-12 mb-2">
-          <section className="d-flex mb-3 justify-content-between btn--grouped">
+          <section className="d-flex justify-content-between btn--grouped">
             {appState.currentState !== States.Menu && (
             <button
               type="button"

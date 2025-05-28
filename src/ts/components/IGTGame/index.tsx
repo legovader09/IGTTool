@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IGTGameProps } from '../../interfaces/IGTGameProps';
 import { ResultEntry } from '../../types/ResultEntry';
 import { withChance } from '../../helpers/withChance';
@@ -26,6 +26,7 @@ export const IGTGame = ({
   const [latestFine, setLatestFine] = useState(0);
   const [showReward, setShowReward] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
+  const [showEndScreen, setShowEndScreen] = useState(false);
 
   // TODO: https://rcns.co.uk/ - https://igt-tool.streamlit.app/ - https://www.psytoolkit.org/experiment-library/igt.html#_download
 
@@ -53,28 +54,57 @@ export const IGTGame = ({
     setShowLoader(true);
 
     setTimeout(() => {
-      onComplete(resultEntries);
-    }, 3000);
+      setShowEndScreen(true);
+    }, 1100);
   };
 
   const handleCardPress = (choice: number) => {
+    const isLastRound = currentRound - 1 === numberOfRounds;
+
     if (showReward) {
       setShowReward(false);
+      if (isLastRound) handleGameEnd();
       return;
     }
 
-    if (currentRound - 1 < numberOfRounds) {
-      updateMoney(choice);
-      setResults((prev) => [...prev, { timeTaken: 0, decision: choice }]);
-      setRound((prev) => prev + 1);
-      setShowReward(true);
-    } else {
-      handleGameEnd();
-    }
+    updateMoney(choice);
+    setResults((prev) => [...prev, { timeTaken: 0, decision: choice }]);
+    setRound((prevRound) => prevRound + 1);
+    setShowReward(true);
   };
 
+  useEffect(() => {
+    const clickEvent = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest('.btn--game') || target.closest('.igt-game--info-banner')) return;
+      if (showReward) setShowReward(false);
+    };
+
+    window.addEventListener('click', clickEvent);
+
+    return () => {
+      window.removeEventListener('click', clickEvent);
+    };
+  }, [showReward]);
+
   if (showLoader) {
-    return <Loader />;
+    return showEndScreen ? (
+      <section className="container">
+        <section className="row">
+          <section className="col-12">
+            <h3>Game Complete</h3>
+            <p>You may now pass the device back to your Clinician.</p>
+            <button
+              type="button"
+              className="btn btn--primary"
+              onClick={() => onComplete(resultEntries)}
+            >
+              Show Results
+            </button>
+          </section>
+        </section>
+      </section>
+    ) : <Loader />;
   }
 
   return (
@@ -144,7 +174,7 @@ export const IGTGame = ({
               className={`col-12 btn btn--no-scale igt-game--info-banner ${showReward ? 'highlight' : ''}`}
               onClick={() => setShowReward(false)}
             >
-              <p>{showReward ? 'CLICK HERE TO COLLECT REWARD (and/or pay fee)' : 'CHOOSE AND CLICK/TAP ON ONE OF THE 4 BUTTONS'}</p>
+              <p>{showReward ? `CLICK/TAP ANYWHERE TO COLLECT REWARD${latestFine > 0 ? ' AND PAY FEE' : ''}` : 'CLICK/TAP ANY OF THE 4 BUTTONS'}</p>
             </button>
           </>
         ) : (
