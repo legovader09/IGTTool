@@ -4,7 +4,7 @@ import { IGTAnalyserProps } from '../../../interfaces/IGTAnalyserProps';
 import { ResultEntry } from '../../../types/ResultEntry';
 import { IGTAnalyserBlockData } from '../../../types/IGTAnalyserBlockData';
 
-export const BlockData = ({ data, isVisible = false }: IGTAnalyserProps) => {
+export const BlockData = ({ data, isVisible = true }: IGTAnalyserProps) => {
   const [blocks, setBlocks] = useState<IGTAnalyserBlockData[]>([]);
 
   const getDecisionCounts = (entries: ResultEntry[]) => {
@@ -40,7 +40,7 @@ export const BlockData = ({ data, isVisible = false }: IGTAnalyserProps) => {
       <section className="container">
         <section className="row">
           {blocks.map((blockEntries, blockIndex) => (
-            <div key={blockIndex} className="col">
+            <div key={blockIndex} className="col col-md-4 col-lg-2 d-flex flex-column">
               <h5>Block {blockIndex + 1}</h5>
               <table className="igt-analyser--table">
                 <thead>
@@ -60,7 +60,7 @@ export const BlockData = ({ data, isVisible = false }: IGTAnalyserProps) => {
               </table>
             </div>
           ))}
-          <section className="col">
+          <section className="col col-md-4 col-lg-2 d-flex flex-column">
             {(() => {
               const counts = getDecisionCounts(data);
 
