@@ -3,3 +3,13 @@
   transform-origin: top center;
   @include animation(fadeExpand, .5s, ease);
 }
+
+.alert {
+  padding: .75rem 1rem;
+  border-radius: 8px;
+  
+  &-warning {
+    background-color: rgba($color-warning, .4);
+    border: 2px solid color-mix(in srgb, $color-warning 50%, $color-black 20%);
+  }
+}

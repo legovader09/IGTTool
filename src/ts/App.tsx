@@ -81,21 +81,24 @@ export const App = () => {
 
             {appState.currentState === States.Analysing && (
               <section className="btn--grouped">
-                <button
-                  type="button"
-                  className="btn btn--primary"
-                  onClick={() => copyTable(tableRef.current.id)}
-                >
-                  Copy Data
-                </button>
-                {/* <button */}
-                {/*  type="button" */}
-                {/*  className="btn btn--secondary" */}
-                {/*  onClick={() => saveToPdf('results-section')} */}
-                {/* > */}
-                {/*  <img className="mb-1 me-1" src="assets/icon-download.svg" width={16} alt="Download" /> */}
-                {/*  Download as PDF */}
-                {/* </button> */}
+                {window.innerWidth > 768 ? (
+                  <button
+                    type="button"
+                    className="btn btn--secondary"
+                    onClick={() => saveToPdf('results-section')}
+                  >
+                    <img className="mb-1 me-1" src="assets/icon-download.svg" width={16} alt="Download" />
+                    Download as PDF
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn--primary"
+                    onClick={() => copyTable(tableRef.current.id)}
+                  >
+                    Copy Data
+                  </button>
+                )}
               </section>
             )}
           </section>
