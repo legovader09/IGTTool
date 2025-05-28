@@ -10,5 +10,5 @@
   ];
 
   const match = thresholds.find((threshold) => zScore >= threshold.range);
-  return match ? match.label : 'Score Out of Range';
+  return match ? match.label : 'Exceptionally Low Score';
 };
