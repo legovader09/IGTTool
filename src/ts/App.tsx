@@ -10,7 +10,7 @@ import { IGTAnalyser } from './components/IGTAnalyser';
 import { DummyResultEntries } from './data/DummyResultEntries';
 import { saveToPdf } from './helpers/saveToPdf';
 
-const initialValues: AppState = { results: [], currentState: States.Menu };
+const initialValues: AppState = { results: [], currentState: States.Menu, immersiveMode: false };
 
 export const App = () => {
   const [appState, setAppState] = useState<AppState>(initialValues);
@@ -35,6 +35,19 @@ export const App = () => {
     setAppState({
       results: DummyResultEntries.generateEntries(100),
       currentState: States.Analysing,
+      immersiveMode: false,
+    });
+  };
+
+  const handleSetImmersiveMode = () => {
+    setAppState((prevState) => {
+      const newState = !prevState.immersiveMode;
+      document.body.classList.toggle('immersive', newState);
+
+      return ({
+        ...prevState,
+        immersiveMode: newState,
+      });
     });
   };
 
@@ -54,6 +67,16 @@ export const App = () => {
             >
               Go back
             </button>
+            )}
+
+            {appState.currentState === States.Playing && (
+              <button
+                type="button"
+                className={`btn btn--primary ${appState.immersiveMode ? 'immersive' : ''}`}
+                onClick={handleSetImmersiveMode}
+              >
+                {appState.immersiveMode ? 'Exit Immersive Mode' : 'Enter Immersive Mode'}
+              </button>
             )}
 
             {appState.currentState === States.Analysing && (
@@ -101,7 +124,11 @@ export const App = () => {
         )}
         {appState.currentState === States.Playing && (
           <section className="col-12">
-            <IGTGame onComplete={handleUpdateResults} numberOfRounds={100} />
+            <IGTGame
+              onComplete={handleUpdateResults}
+              immersiveMode={appState.immersiveMode}
+              numberOfRounds={100}
+            />
           </section>
         )}
         {appState.currentState === States.Analysing && (

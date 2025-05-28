@@ -12,6 +12,14 @@
     transform: scale(1.1);
   }
   
+  &.immersive {
+    z-index: 1000;
+
+    &:hover {
+      background-color: rgba($color-secondary, 1);
+    }
+  }
+  
   &--grouped {    
     .btn:first-child {
       margin-right: 16px;

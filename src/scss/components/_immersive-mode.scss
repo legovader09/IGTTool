@@ -1,0 +1,36 @@
+﻿.container .immersive {
+  transition: all 0.3s ease-in-out;
+}
+
+.immersive-mode {
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 400;
+  background: rgba(0, 0, 0, .8);
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+
+    + .container .immersive {
+      background: $color-background;
+      position: relative;
+      z-index: 1000;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+
+      @include media-breakpoint-up(md) {
+        border-radius: 8px;
+        padding: 1rem;
+      }
+    }
+  }
+}

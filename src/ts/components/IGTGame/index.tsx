@@ -9,6 +9,7 @@ import { Loader } from '../Loader';
 
 export const IGTGame = ({
   onComplete,
+  immersiveMode,
   numberOfRounds = 100,
   startingMoney = 2000,
   chanceOfFine = 0.5,
@@ -108,15 +109,17 @@ export const IGTGame = ({
   }
 
   return (
-    <section className="container igt-game">
-      <section className="row">
-        {gameStarted ? (
-          <>
-            <section className="col-12">
-              <p className="igt-game--balance">Your money: <b>{formatToCurrency(money)}</b></p>
-            </section>
-            <section className="col-12 mb-3 igt-game--balance-visual">
-              {showReward && (
+    <>
+      <section className={`immersive-mode ${immersiveMode ? 'show' : 'hide'}`} />
+      <section className="container igt-game">
+        <section className="row immersive">
+          {gameStarted ? (
+            <>
+              <section className="col-12">
+                <p className="igt-game--balance">Your money: <b>{formatToCurrency(money)}</b></p>
+              </section>
+              <section className="col-12 mb-3 igt-game--balance-visual">
+                {showReward && (
                 <>
                   <div className="igt-game--block igt-game--block-reward">
                     <p>
@@ -135,56 +138,57 @@ export const IGTGame = ({
                     <div className="igt-game--block igt-game--block-empty" />
                   )}
                 </>
-              )}
-            </section>
-            <section className="col-12 mb-3">
-              <section className="igt-game--btn-container">
-                <button
-                  type="button"
-                  className="btn btn--game"
-                  onClick={() => handleCardPress(1)}
-                  aria-label="Option A"
-                >A
-                </button>
-                <button
-                  type="button"
-                  className="btn btn--game"
-                  onClick={() => handleCardPress(2)}
-                  aria-label="Option B"
-                >B
-                </button>
-                <button
-                  type="button"
-                  className="btn btn--game"
-                  onClick={() => handleCardPress(3)}
-                  aria-label="Option C"
-                >C
-                </button>
-                <button
-                  type="button"
-                  className="btn btn--game"
-                  onClick={() => handleCardPress(4)}
-                  aria-label="Option D"
-                >D
-                </button>
+                )}
               </section>
-            </section>
-            <button
-              type="button"
-              className={`col-12 btn btn--no-scale igt-game--info-banner ${showReward ? 'highlight' : ''}`}
-              onClick={() => setShowReward(false)}
-            >
-              <p>{showReward ? `CLICK/TAP ANYWHERE TO COLLECT REWARD${latestFine > 0 ? ' AND PAY FEE' : ''}` : 'CLICK/TAP ANY OF THE 4 BUTTONS'}</p>
-            </button>
-          </>
-        ) : (
-          <Instructions
-            onStart={handleGameStart}
-            startingMoney={startingMoney}
-            numberOfRounds={numberOfRounds}
-          />
-        )}
+              <section className="col-12 mb-3">
+                <section className="igt-game--btn-container">
+                  <button
+                    type="button"
+                    className="btn btn--game"
+                    onClick={() => handleCardPress(1)}
+                    aria-label="Option A"
+                  >A
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn--game"
+                    onClick={() => handleCardPress(2)}
+                    aria-label="Option B"
+                  >B
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn--game"
+                    onClick={() => handleCardPress(3)}
+                    aria-label="Option C"
+                  >C
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn--game"
+                    onClick={() => handleCardPress(4)}
+                    aria-label="Option D"
+                  >D
+                  </button>
+                </section>
+              </section>
+              <button
+                type="button"
+                className={`col-12 btn btn--no-scale igt-game--info-banner ${showReward ? 'highlight' : ''}`}
+                onClick={() => setShowReward(false)}
+              >
+                <p>{showReward ? `CLICK/TAP ANYWHERE TO COLLECT REWARD${latestFine > 0 ? ' AND PAY FEE' : ''}` : 'CLICK/TAP ANY OF THE 4 BUTTONS'}</p>
+              </button>
+            </>
+          ) : (
+            <Instructions
+              onStart={handleGameStart}
+              startingMoney={startingMoney}
+              numberOfRounds={numberOfRounds}
+            />
+          )}
+        </section>
       </section>
-    </section>
+    </>
   );
 };
