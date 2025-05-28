@@ -10,6 +10,7 @@ import { Loader } from '../Loader';
 export const IGTGame = ({
   onComplete,
   immersiveMode,
+  onGameStart = () => {},
   numberOfRounds = 100,
   startingMoney = 2000,
   chanceOfFine = 0.5,
@@ -49,6 +50,7 @@ export const IGTGame = ({
 
   const handleGameStart = () => {
     setGameStarted(true);
+    onGameStart();
   };
 
   const handleGameEnd = () => {

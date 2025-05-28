@@ -14,6 +14,7 @@ const initialValues: AppState = { results: [], currentState: States.Menu, immers
 
 export const App = () => {
   const [appState, setAppState] = useState<AppState>(initialValues);
+  const [showImmersiveButton, setShowImmersiveButton] = useState(false);
   const tableRef = useRef(null);
 
   const handleUpdateResults = (results: ResultEntry[]) => {
@@ -69,7 +70,7 @@ export const App = () => {
             </button>
             )}
 
-            {appState.currentState === States.Playing && (
+            {appState.currentState === States.Playing && showImmersiveButton && (
               <button
                 type="button"
                 className={`btn btn--primary ${appState.immersiveMode ? 'immersive' : ''}`}
@@ -128,6 +129,7 @@ export const App = () => {
         {appState.currentState === States.Playing && (
           <section className="col-12">
             <IGTGame
+              onGameStart={() => setShowImmersiveButton(true)}
               onComplete={handleUpdateResults}
               immersiveMode={appState.immersiveMode}
               numberOfRounds={100}

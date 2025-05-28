@@ -2,6 +2,7 @@
 
 export interface IGTGameProps {
   onComplete: (results: ResultEntry[]) => void;
+  onGameStart?: () => void;
   immersiveMode: boolean;
   numberOfRounds?: number;
   startingMoney?: number;
