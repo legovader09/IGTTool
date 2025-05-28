@@ -81,13 +81,13 @@ export const App = () => {
 
             {appState.currentState === States.Analysing && (
               <section className="btn--grouped">
-                <button
-                  type="button"
-                  className="btn btn--primary"
-                  onClick={() => copyTable(tableRef.current.id)}
-                >
-                  Copy Data
-                </button>
+                {/* <button */}
+                {/*  type="button" */}
+                {/*  className="btn btn--primary" */}
+                {/*  onClick={() => copyTable(tableRef.current.id)} */}
+                {/* > */}
+                {/*  Copy Data */}
+                {/* </button> */}
                 <button
                   type="button"
                   className="btn btn--secondary"

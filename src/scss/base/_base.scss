@@ -83,8 +83,11 @@ table {
   margin: 25px 0;
   font-size: 0.9em;
   font-family: sans-serif;
-  min-width: 400px;
   box-shadow: 0 0 20px rgba($color-black, 0.15);
+  
+  @include media-breakpoint-up(md) {
+    min-width: 400px;
+  }
   
   thead tr {
     background-color: rgba($color-table-header, .9);
