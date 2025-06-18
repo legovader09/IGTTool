@@ -22,7 +22,10 @@ export const App = () => {
       ...prevState,
       results,
       currentState: States.Analysing,
+      immersiveMode: false,
     }));
+
+    document.body.classList.toggle('immersive', false);
   };
 
   const handleLaunchGame = () => {

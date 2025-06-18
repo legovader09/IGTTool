@@ -1,4 +1,4 @@
 ﻿export type ResultEntry = {
-    timeTaken: number;
-    decision: number;
+  timeTaken: number;
+  decision: number;
 }
