@@ -62,7 +62,7 @@ export const IGTGame = ({
   };
 
   const handleCardPress = (choice: number) => {
-    const isLastRound = currentRound - 1 === numberOfRounds;
+    const isLastRound = currentRound - 1 >= numberOfRounds;
 
     if (showReward) {
       setShowReward(false);
